@@ -74,12 +74,36 @@ Iot 개발자 기초 프로그래밍 언어 repository
 ## 3일차 
 - 파이썬 기초
     - 흐름제어
-        - if
-        - for
-        - while
+        - if - 참을 기준으로 분기
+        - for - 일반적인 반복문 
+        - while - 참인 조건일 동안 반복
+
     - 파일 입출력
+        - open(경로, model='r|W|a', encoding='utf-8')
+        - write(), readline()
+        - close()
+
     - 함수
+        - f(x) = y
+        - 자주 사용하는 로직을 묶어놓은 덩어리
+        - 함수 호출
+        ```python
+        def funName(param):
+            # 로직작성
+        ```
     - 객체지향
+        - 현실세계와 동일하게 프로그래밍 하겠다는 설계방식 
+        - 객체의 틀이되는 Class(클래스)를 선언
+            - 클래스 : 명사와 동사의 집합
+                - 명사: 멤버변수(속성)
+                - 동사: 멤버함수(메서드)
+            ```python
+            class ClassName:
+                #멤버변수
+
+                def 멤버함수(self, param):
+                    #로직
+            ```   
     - 모듈, 패키지
     - 예외처리
     - 디버깅
