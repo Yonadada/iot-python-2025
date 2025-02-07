@@ -110,3 +110,21 @@ print(f'{len(arr)}까지의 합산은, {sum}입니다.')
 
 #1~100 홀수만 
 #2~100 짝수만  
+
+# append()
+x = ['W','Y', 'Z']
+y = ['A','C','E']
+
+x.append(y)
+print(x)
+# 출력값 => ['W', 'Y', 'Z', ['A', 'C', 'E']]
+print(len(x)) # 리스트 길이 4개
+
+# extend
+x = ['W', 'Y', 'Z']
+y = ['A', 'C', 'E']
+
+x.extend(y)
+print(x)
+# 출력값 => ['W', 'Y', 'Z', 'A', 'C', 'E']
+print(len(x)) # 리스트 길이 6개
