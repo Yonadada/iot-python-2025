@@ -152,7 +152,7 @@ Iot 개발자 기초 프로그래밍 언어 repository
             - 예외처리 : (1)입력시 바로 엔터, (2)입력시 4개의 아이템을 입력X 결과 x, 입력&삭제 데이터 알림 출력
             - 화면편집 : 검색이나 출력시 데이터 수 표시
           
-https://github.com/user-attachments/assets/821163c8-7f79-4c58-b6ce-d5260b62717e
+    https://github.com/user-attachments/assets/821163c8-7f79-4c58-b6ce-d5260b62717e
 
     - 주피터노트북 기본사용법
         - 파이썬으로 연구를 목적으로하는 리포트 작성에 특화된 기술
