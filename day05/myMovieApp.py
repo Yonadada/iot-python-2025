@@ -57,14 +57,14 @@ def run() :
             
         elif sel_menu == 4:
             print('영화삭제')  
-            try:
-                title = input('삭제할 영화 이름 입력 > ')
-                del_movie(lst_movie, title)
-                print('-----영화삭제 성공-----')
-            except Exception as e :
-                print(f'-----영화입력 실패-----{e}')
+            title = input('삭제할 영화 이름 입력 > ')
+            if del_movie(lst_movie, title) :
                 
-            
+                print('-----영화삭제 성공-----')
+            else :
+                print('-----영화삭제 성공-----')
+
+                
         
         elif sel_menu == 5:
             #print('어플종료')
