@@ -35,9 +35,14 @@ def run() :
         if sel_menu == 1:
             #print('영화입력')
             
-            movie = set_movie()
-            lst_movie.append(movie)
-            
+            try:
+                movie = set_movie()
+                lst_movie.append(movie)
+                print('-----영화입력 성공-----')
+            except Exception as e:
+                print(f'-----영화입력 실패-----{e}')
+                
+                
         elif sel_menu == 2:
             print('영화출력')
             get_movie(lst_movie)
@@ -46,15 +51,19 @@ def run() :
         elif sel_menu == 3:
             print('영화검색')
             
-            title = input('검색할 영화 이름 입력 >')
+            title = input('검색할 영화 이름 입력 > ')
             search_movie(lst_movie, title)
             
             
         elif sel_menu == 4:
             print('영화삭제')  
-            
-            title = input('삭제할 영화 이름 입력 > ')
-            del_movie(lst_movie, title)
+            try:
+                title = input('삭제할 영화 이름 입력 > ')
+                del_movie(lst_movie, title)
+                print('-----영화삭제 성공-----')
+            except Exception as e :
+                print(f'-----영화입력 실패-----{e}')
+                
             
         
         elif sel_menu == 5:
@@ -73,9 +82,15 @@ def run() :
         
 #영화검색 함수 
 def search_movie(items: list, title: str):
+    count = 0
+    
     for item in items:   # item이 Movie 클래스인지 알 수 없음
         if item.isNameContain(title): # 오타발생 위험이 큼!
+            count += 1 # 검색된 결과가 있음
             print(item)
+            print('----------')
+            
+    print(f'검색 데이터 수 : {count}개')
         
     
 #영화삭제 함수   #enumerate 클래스는 인덱스에 위치한 번호와 값이 나오게 해준다
@@ -102,7 +117,9 @@ def set_movie():
 def get_movie(items :list):
     for item in items:
         print(item) # Movie 객체
+        print('----------') # 각 영화 아이템별 구분 실선
         
+    print(f'총 데이터 수 : {len(items)}개') # 총 영화 데이터 개수 
 
 #폴더에 파일로 영화리스트 저장
 def save_movie(items: list) :
