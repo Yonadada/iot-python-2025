@@ -150,10 +150,9 @@ Iot 개발자 기초 프로그래밍 언어 repository
     - 토이프로젝트
         - 내 영화 앱 수정, 마무리
             - 예외처리 : (1)입력시 바로 엔터, (2)입력시 4개의 아이템을 입력X 결과 x, 입력&삭제 데이터 알림 출력
-
             - 화면편집 : 검색이나 출력시 데이터 수 표시
-            -
-              https://github.com/user-attachments/assets/0a935066-9cfe-4f2d-9fb8-8876166818e8
+          
+https://github.com/user-attachments/assets/0a935066-9cfe-4f2d-9fb8-8876166818e8
               
 
         - ChatGPT 윈도우앱(tkinter) 만들기
