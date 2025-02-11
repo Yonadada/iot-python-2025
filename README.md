@@ -223,7 +223,9 @@ Iot 개발자 기초 프로그래밍 언어 repository
 
     - 실습
         -Gemini chatAPP -> **클래스형태로** 변경
-        
+      
+https://github.com/user-attachments/assets/349af20b-e625-4f8d-b63c-6c68e4451aca
+
 - 파이썬 응용
     - 실행파일 만들기
         - `pyinstaller` 모듈 설치 
