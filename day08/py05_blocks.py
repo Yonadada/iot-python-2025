@@ -59,13 +59,18 @@ def main():
     
     bigFont = pygame.font.SysFont('NanumGothic', 80)
     smallFont = pygame.font.SysFont('NanumGothic', 45)
-    M_GAME_TITLE = bigFont.render('--GAME START--', True, 'white')
-    M_GAME_SUBTITLE = smallFont.render('--PRESS SPACE_BAR--', True, 'white')
+    M_GAME_TITLE = bigFont.render('GAME START?', True, 'white')
+    M_GAME_SUBTITLE = smallFont.render('PRESS SPACE_BAR', True, 'white')
     M_CLEAR = bigFont.render('CLEAR!!', True, 'yellow')
-    M_FAIL = bigFont.render('FAILED', True, 'red')    
+    M_FAIL = bigFont.render('YOU LOSE', True, 'red')    
     
     while True:
+        
         # 스코어, 스피드 
+        M_SCORE = smallFont.render(f'SCORE : {score}', True, 'white')
+        M_SPEED = smallFont.render(f'SPEED : {BALL.speed}', True, 'white')
+        
+        
         Surface.fill((0,0,0))
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -73,14 +78,14 @@ def main():
                 sys.exit()  
             elif event.type == KEYDOWN:
                 if event.key == K_LEFT:
-                    if PADDLE.rect.centerx < 55:
-                        PADDLE.rect.centerx = 55
+                    if PADDLE.rect.centerx < 50:
+                        PADDLE.rect.centerx = 50
                     else:
                         PADDLE.rect.centerx -= 10 #패달은 왼쪽,오른쪽으로만 이동
 
                 elif event.key == K_RIGHT:
-                    if PADDLE.rect.centerx > 945:
-                        PADDLE.rect.centerx = 945
+                    if PADDLE.rect.centerx > (SCREEN_WIDTH - 50):
+                        PADDLE.rect.centerx = (SCREEN_WIDTH - 50)
                     else:
                         PADDLE.rect.centerx += 10
                     
@@ -95,13 +100,19 @@ def main():
                                         (SCREEN_HEIGHT / 2) + 50))
         
         else : # 게임 시작 후 블록,볼,바가 움직이도록 처리
-            # Surface.blit(M_CLEAR, (80, 280))    
+            Surface.blit(M_SCORE, (10, 770))    
+            Surface.blit(M_SPEED, (SCREEN_WIDTH - 220, 770))
+            
             
             LenBlock = len(BLOCK) # 54으로 시작하지만 공에 충돌해서 갯수가 계속 줄어듬
             # Collision Detection
             BLOCK = [x for x in BLOCK if not x.rect.colliderect(BALL.rect)]
             if len(BLOCK) != LenBlock: # 공이 블럭에 맞아서 개수가 맞지 않음
                 BALL.dir *= -1 # 공의 방향이 바뀜
+                BALL.speed += 0.25 
+                
+                # 점수처리
+                score += 10
                 
             if BALL.rect.centery < 1000:
                 BALL.move()
@@ -109,15 +120,26 @@ def main():
                 
             # 패들과 공이 부딪힘(Collision Detect!)    
             if PADDLE.rect.colliderect(BALL.rect):
-                BALL.speed += 0.25 
+                BALL.speed += 0.25 #공 스피드 올리기
                 BALL.dir = 90 + (PADDLE.rect.centerx - BALL.rect.centerx) / PADDLE.rect.width * 100   
                 
                 
-            if BALL.rect.centerx < 0 or BALL.rect.centerx > 1000: # 게임화면 양쪽 벽 밖으로 못나가게
+            if BALL.rect.centerx < 0 or BALL.rect.centerx > (SCREEN_WIDTH -10): # 게임화면 양쪽 벽 밖으로 못나가게
                 BALL.dir = 180 - BALL.dir # 반사각만큼 방향 전환
                 
-            elif BALL.rect.centery < 0 : ## 게임화면 천장에 부딪히면 반사
+            elif BALL.rect.centery < 10 : ## 게임화면 천장에 부딪히면 반사
                 BALL.dir = -BALL.dir   
+            
+            # 게임 클리어, 종료 로직
+            if len(BLOCK) == 0 : # 공으로 블럭을 다 없앴음
+                Surface.blit(M_CLEAR,((SCREEN_WIDTH / 2) - (240 / 2),
+                                    (SCREEN_HEIGHT / 2) - (50 / 2)))
+            # 게임 실패    
+            if BALL.rect.centery > 800:
+                Surface.blit(M_FAIL,((SCREEN_WIDTH / 2) - (240 / 2),
+                                    (SCREEN_HEIGHT / 2) - (50 / 2)))
+                
+                # is_game_start = False # 게임 종료 후 재시작은 나중에 다시 시도해보기!!
                 
             BALL.draw_E()
             PADDLE.draw_R()
