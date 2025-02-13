@@ -254,3 +254,6 @@ https://github.com/user-attachments/assets/349af20b-e625-4f8d-b63c-6c68e4451aca
         - 공의 시작방향, 경계부분 문제 해결, 종료 후 다시시작 로직
       
 <img src="./image/py004.gif" width="700" height="450">        
+
+## 9일차
+- 코딩 테스트
